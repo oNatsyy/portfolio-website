@@ -101,19 +101,36 @@ nav ul li {
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 5rem;
   max-width: 68.75rem;
-  margin-top: 40px;
+  margin-top: 60px;
   margin-bottom: 40px;
-  margin-right: 80px;
-  margin-left: 80px;
+  margin-right: 40px;
+  margin-left: 40px;
 }
 
-.hero img {
-  height: 20rem;
-  width: 25rem;
-  border: 5px solid #000000;
+.hero .image-container {
+  position: relative;
+}
+
+.hero .image-container img {
+  height: 20rem; /* Adjust the height as per your preference */
+  width: 25rem; /* Adjust the width as per your preference */
+  border: 5px solid black;
+  animation: glowBorder 2s linear infinite; /* Adjust the animation duration as desired */
+}
+
+@keyframes glowBorder {
+  0% {
+    box-shadow: 0 0 5px #000000;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00, 0 0 40px #00ff00; /* Adjust the color and size of the glow effect */
+  }
+  100% {
+    box-shadow: 0 0 5px #000000;
+  }
 }
 
 .bio {
@@ -137,8 +154,22 @@ nav ul li {
 .bio p {
   color: var(--primary-color);
   line-height: var(--line-height);
-  padding: 0.3rem 0;
-  text-align: justify;
+  white-space: pre-wrap;
+  overflow: hidden;
+  width: fit-content;
+  border-right: 2px solid;
+  animation: typing 2s steps(40), cursor-blink 1s infinite;
+  display: inline;
+  text-align: justify
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 /* More About */
@@ -178,16 +209,24 @@ nav ul li {
 }
 
 .icon {
-  width: 11.875rem;
-  height: 11.25rem;
+  width: 11.60rem;
+  height: 11.75rem;
 }
 
 .icon-card {
-  background-color: #4c4c4c;
+  background-color: #000000;
   border-radius: 11px;
-  box-shadow: 0 3px 10px var(--secondary-shadow);
+  box-shadow: 0px 1px 2px 0px rgba(124,255,1),
+  1px 2px 4px 0px rgba(124,255,1),
+  2px 4px 8px 0px rgba(124,255,1),
+  2px 4px 16px 0px rgba(124,255,1);
   padding: 20px;
-  margin: 10px;
+  margin: 15px;
+  transition: transform 0.3s ease;
+}
+
+.icon-card.enlarged {
+  transform: scale(1.1); /* Increase the scale value as desired */
 }
 
 /* Projects */
